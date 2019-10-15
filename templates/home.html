@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container upper-margin">
+    <div class="row border justify-content-center align-items-center" style="min-height: 300px">
+        <div class="col-8 border">
+            <h1 class="display-1">Welcome</h1>
+            {% if user.is_authenticated %}
+            <h1 class="lead">Username: {{user.username}}</h1>
+            <h1 class="lead">Last Login: {{user.last_login}}</h1>
+            <h1 class="lead">Email: {{user.last_login}}</h1>
+            <a href="{% url 'logout' %}" class="btn btn-block btn-outline-dark mb-2">Logout</a>
+            <div class="btn-group">
+                <a href="{% url 'update' user.id %}" class="btn btn btn-outline-dark my-2">Update User Profile</a>
+
+            </div>
+            {% else %}
+            <h1 class="lead">Have a nice day !!!</h1>
+            <a href="{% url 'login' %}" class="btn btn btn-outline-dark">Login</a>
+            <a href="{% url 'password_reset' %}" class="btn btn btn-outline-dark my-2  align-self-end">Reset Your
+                Password</a>
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
